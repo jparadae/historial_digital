@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load staticfiles %}
-{% block title %}Cargar On Time Cloud{% endblock %}
+{% load static %}
+{% block title %}Cargar Disponibilidad{% endblock %}
 
 {% block css %}
 
@@ -12,7 +12,7 @@
 		<div class="col s12 m8 offset-m2">
 			<ul class="collapsible collapsible reservar" data-collapsible="expandable">
 				<li>
-					<div class="collapsible-header active #8bc34a light-green" data-step="1"><i class="material-icons">access_time</i> Cargar Horas Disponibles en On Time Cloud</div>
+					<div class="collapsible-header active #8bc34a light-green" data-step="1"><i class="material-icons">access_time</i> Cargar Horas Disponibles en Agenda</div>
 					<div class="collapsible-body">
 						<form name="formStep1" ng-submit="submitCarga()" novalidate>
 							<div class="row">
