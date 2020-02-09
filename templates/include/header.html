@@ -1,0 +1,103 @@
+{% load static %}
+<header>
+	<div class="navbar-fixed">
+		<nav style="overflow: initial;">
+			<div class="nav-wrapper"> <!--color nav-->
+				<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+				<ul class="side-nav" id="mobile-demo">
+					<div class="no-paddidng">
+						{% if user.is_authenticated %}
+							<div class="chip center" style="margin-top: 15px; margin-left: 10%; width: 80%">
+							<i class="material-icons">account_circle</i>	<img src="" alt="{{ user.first_name }}">
+							<a class="dropdown-button waves-effect grey-text text-darken-4" style="line-height: 32px;">{{ user.first_name }}</a>
+						</div>
+						{% else %}
+							<div class="col s12 social-buttons">
+								<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-block btn-social btn-facebook">
+									<span class="fa fa-facebook"></span> Iniciar con Facebook
+								</a>
+							</div>
+						{% endif %}
+					</div>
+					<li class="no-padding">
+						<ul class="collapsible collapsible-accordion ">
+							<li class="bold "><a href="{% url 'agenda' %}" class="collapsible-header waves-effect "><i class="material-icons">event</i> Agenda</a>
+							</li>
+						</ul>
+					</li>
+					{% if user.is_authenticated %}
+						<li class="no-padding">
+							<ul class="collapsible collapsible-accordion">
+								<li class="bold"><a href="{% url 'cargar' %}" class="collapsible-header waves-effect"><i class="material-icons">open_in_browser</i> Cargar</a>
+								</li>
+							</ul>
+						</li>
+						<li class="no-padding">
+							<ul class="collapsible collapsible-accordion">
+								<li class="bold"><a href="/admin/" class="collapsible-header waves-effect"><i class="material-icons">settings</i> Administración</a>
+								</li>
+							</ul>
+						</li>
+					{% endif %}
+					<li class="no-padding">
+						<ul class="collapsible collapsible-accordion">
+							<li class="bold"><a href="#" class="collapsible-header waves-effect"><i class="material-icons">live_help</i> Ayuda</a>
+							</li>
+						</ul>
+					</li>
+					<li class="no-padding">
+						<ul class="collapsible collapsible-accordion">
+							<li class="bold"><a href="{% url 'logout' %}" class="collapsible-header waves-effect"><i class="material-icons">exit_to_app</i> Salir</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				{% if user.is_authenticated %}
+					<div class="chip right hide-on-med-and-down" style="margin-top: 15px;">
+						<i class="material-icons">account_circle</i><img src="" alt="{{ user.first_name }}">
+						<a class="dropdown-button waves-effect grey-text text-darken-4" data-activates="profile-dropdown">{{ user.username }}</a>
+				
+						<ul id="profile-dropdown" class="dropdown-content" style="width: 200px;">
+							<li><a href="#"><i class="mdi-action-face-unlock"></i> <span>Perfil</span></a>
+							</li>
+							<li><a href="#"><i class="mdi-action-help"></i> <span>Ayuda</span></a>
+							</li>
+							<li class="divider"></li>
+							<li><a href="{% url 'logout' %}"><i class="mdi-hardware-keyboard-tab"></i> <span>Salir</span></a>
+							</li>
+						</ul>
+					</div>
+				{% else %}
+				<p>
+				<div class="col-md-2 " style="margin-left: 10px;">
+					<button type="button" class="btn btn-default; waves-effect waves-light btn right" style="margin-left: 10px;"><a href="{% url 'login' %}">Login Funcionarios </a></button>
+					</div>
+					<div class="col-md-2 ">
+						<button type="button" class="btn btn-default; waves-effect waves-light btn right">
+					<a href="https://accounts.claveunica.gob.cl/accounts/login/?next=/openid/authorize%3Fclient_id%832965e3eecc4455a699579a6409a0fa%26redirect_uri%3Dhttps%253A%252F%252F190.114.254.133%252Flogin%252Fclaveunica%252Fcallback%26scope%3Dopenid%2Brun%2Bname%2Bemail%26response_type%3Dcode%26state%3DiYrcD0flqseCfbSaW2u5yyN1i3uOnmGmnra1qQBE">Login Clave Única 
+					</a></button>
+				</div></p>
+				
+					{% endif %}
+				
+			</div>
+		</nav>
+	</div>
+	
+</header>
+
+<style>
+nav{
+background: 
+linear-gradient(90deg,
+ rgba(214,39,23,0.6727284663865547) 0%,
+ rgba(253,77,29,0.790375525210084) 50%,
+ rgba(252,155,69,0.9276304271708683) 100%);
+}	
+
+button{
+	background-image: linear-gradient(#bdc3c7 0%, #2c3e50 51%, #bdc3c7 100%);
+	
+}
+</style>
